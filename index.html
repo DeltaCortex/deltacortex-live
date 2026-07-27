@@ -223,6 +223,9 @@ h2 { font-family: var(--font-display); font-weight: 600; font-size: 2.1rem; lett
   background: linear-gradient(135deg, var(--magenta), var(--cyan)); color: #0a0e17;
   font-weight: 700; font-size: 0.98rem; margin-bottom: 12px;
 }
+.btn-checkout.disabled {
+  background: var(--card-border); color: var(--text-faint); cursor: default; pointer-events: none;
+}
 .checkout-sub { text-align: center; font-size: 0.78rem; color: var(--text-faint); }
 
 /* ── FAQ ── */
@@ -448,8 +451,8 @@ footer { border-top: 1px solid var(--card-border-soft); padding: 44px 0 36px; }
         → Create link → paste the resulting https://buy.stripe.com/xxxxx URL below.
         No backend required for this step.
       -->
-      <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="btn-checkout">Subscribe with Stripe</a>
-      <div class="checkout-sub">Secure checkout by Stripe · you'll get your license key by email</div>
+      <a href="#" class="btn-checkout disabled" onclick="return false;" aria-disabled="true">Coming soon</a>
+      <div class="checkout-sub">Not open for signups yet — check back soon</div>
     </div>
   </div>
 </section>

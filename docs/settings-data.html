@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings &amp; Data — DeltaCortex Docs</title>
+<meta name="description" content="License, Market Data Connection, Local Backup, Cloud Sync, Portfolio Configuration, and Event Dates — every Settings card explained.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 136 110'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23F015E0'/%3E%3Cstop offset='0.55' stop-color='%2322E5EE'/%3E%3Cstop offset='1' stop-color='%23EFA21B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M68 10 L120 98 L16 98 Z' fill='none' stroke='%234a5d7e' stroke-width='16' stroke-linejoin='round'/%3E%3Cpath d='M4 78 L46 78 L60 48 L74 78 L82 78 L91 62 L100 78 L132 78' fill='none' stroke='url(%23g)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="docs-header">
+    <a href="index.html" class="docs-brand" style="text-decoration:none;">
+        <svg width="38" height="30" viewBox="0 0 136 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="dcPulse" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#F015E0"/>
+                    <stop offset="0.55" stop-color="#22E5EE"/>
+                    <stop offset="1" stop-color="#EFA21B"/>
+                </linearGradient>
+            </defs>
+            <path d="M68 10 L120 98 L16 98 Z" fill="none" stroke="#4a5d7e" stroke-width="14" stroke-linejoin="round"/>
+            <path d="M2 78 L44 78 L58 46 L72 78 L80 78 L89 60 L98 78 L134 78"
+                  fill="none" stroke="url(#dcPulse)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+            <div class="docs-brand-name">DeltaCortex <span style="color:var(--text-muted); font-weight:500;">Docs</span></div>
+            <div class="docs-brand-sub">Options Trading Engine</div>
+        </div>
+    </a>
+    <a class="docs-header-cta" href="https://deltacortex.app" target="_blank" rel="noopener">Open the App ↗</a>
+</header>
+
+<div class="docs-shell">
+    <nav class="docs-nav" aria-label="Documentation sections">
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Start Here</div>
+            <a href="index.html" class="docs-nav-link">Getting Started</a>
+        </div>
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Reference</div>
+            <a href="core-workflows.html" class="docs-nav-link">Core Workflows</a>
+            <a href="settings-data.html" class="docs-nav-link active">Settings &amp; Data</a>
+            <a href="troubleshooting.html" class="docs-nav-link">Troubleshooting &amp; FAQ</a>
+        </div>
+    </nav>
+
+    <main class="docs-content">
+        <h1>Settings &amp; Data</h1>
+        <p class="docs-lede">
+            Every card in the ⚙️ Settings tab, what it controls, and where your data actually
+            lives. Nothing here is uploaded to a DeltaCortex server — everything is local to your
+            browser unless you explicitly turn on Cloud Sync.
+        </p>
+
+        <section id="license">
+            <h2>License</h2>
+            <p>
+                Your positions, P&amp;L, and the decision engine (Smart Actions, eject prices,
+                capital efficiency) are always available, licensed or not. An active license —
+                during your 14-day trial, or on a paid plan afterward — additionally unlocks the
+                <strong>Find Puts</strong> / <strong>Scan CCs</strong> scanners and
+                <strong>Cloud Sync</strong>. Paste a license key here to activate it.
+            </p>
+        </section>
+
+        <section id="market-data">
+            <h2>Market Data Connection</h2>
+            <p>
+                Your <a href="https://www.marketdata.app" target="_blank" rel="noopener">MarketData.app</a>
+                API key — the free tier includes 100 requests/day, enough for a small portfolio.
+                It powers every live price, Greek, and IV in the app. Stored only in this browser
+                (or in your own private GitHub Gist, if Cloud Sync is on) — never on a DeltaCortex
+                server.
+            </p>
+        </section>
+
+        <section id="local-backup">
+            <h2>Local Backup</h2>
+            <p>
+                <strong>Download Backup</strong> saves a complete JSON file — positions, closed
+                trades, earnings, dividends, sector map, portfolio config, and your API key.
+                <strong>Restore from File</strong> loads one back in. No account needed.
+            </p>
+            <div class="docs-callout">
+                This is also how you move to a new device or a new browser profile: download a
+                backup on the old one, restore that same file on the new one, and everything
+                comes with it.
+            </div>
+        </section>
+
+        <section id="cloud-sync">
+            <h2>Cloud Sync</h2>
+            <p>
+                Optional. Syncs all your data through a <strong>private</strong> Gist on your own
+                GitHub account — never through a shared DeltaCortex server. Setup:
+            </p>
+            <ol>
+                <li>Create a free GitHub account if you don't have one</li>
+                <li>Settings → Developer settings → Personal access tokens → Generate new token (classic)</li>
+                <li>Grant it only the <code>gist</code> scope</li>
+                <li>Paste that token into DeltaCortex — the Gist ID auto-fills on your first push</li>
+                <li>Use the <em>same</em> token and Gist ID on every device you want synced</li>
+            </ol>
+            <p>
+                <strong>Push to Cloud</strong> and <strong>Pull from Cloud</strong> sync manually,
+                or turn on <strong>Auto-sync</strong> to pull on load and push after every change.
+                Local Backup works fine without ever touching this.
+            </p>
+        </section>
+
+        <section id="portfolio-config">
+            <h2>Portfolio Configuration</h2>
+            <p>The numbers behind buying-power math, position sizing, and yield targets:</p>
+            <div class="docs-card-grid">
+                <div class="docs-card">
+                    <div class="docs-card-title">Total Buying Power</div>
+                    <div class="docs-card-body">Total cash allocated to this strategy — drives utilization % and sizing warnings.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Max Utilization Target</div>
+                    <div class="docs-card-body">Share of buying power to keep deployed at once. ~55–65% leaves room to roll or add.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Max Per Position / Sector</div>
+                    <div class="docs-card-body">Caps on how much one ticker or sector can represent, so one bad trade or sector move can't hurt too much.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">VIX Override</div>
+                    <div class="docs-card-body">Manually set the VIX reading for market-regime context, instead of estimating from UVXY.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">FDRXX Rate &amp; Hurdle Multiple</div>
+                    <div class="docs-card-body">Your idle-cash yield, and how many multiples of it a new trade must clear (2× is a reasonable default).</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Weekly Income Goal</div>
+                    <div class="docs-card-body">A flat weekly premium target — drives the dashboard's Weekly Goal card.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Mark Options At</div>
+                    <div class="docs-card-body">Mid (realistic fill value, default) or Ask (conservative buyback cost) for P&amp;L and capture %.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Sector Assignments</div>
+                    <div class="docs-card-body">Map tickers to sectors so concentration limits catch exposure that spans multiple tickers in the same sector.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="event-dates">
+            <h2>Event Dates</h2>
+            <p>
+                <strong>Earnings dates</strong> are auto-fetched when you add a position and on
+                Refresh All — add one manually only if needed. <strong>Ex-dividend dates</strong>
+                are <em>not</em> auto-fetched (MarketData.app doesn't provide dividend data), so
+                look up the ex-date — and ideally the amount — once per ticker you hold covered
+                calls against. Both feed the gap-risk and early-assignment flags on your positions;
+                a "look up on stockanalysis.com" shortcut is built into each add form.
+            </p>
+        </section>
+
+        <section id="next">
+            <h2>What's next</h2>
+            <div class="docs-next-grid">
+                <div class="docs-next-card">
+                    <h3>Core Workflows</h3>
+                    <p>Adding &amp; importing positions, running the scanners, rolling and closing.</p>
+                    <a href="core-workflows.html">Read it ↗</a>
+                </div>
+                <div class="docs-next-card">
+                    <h3>Troubleshooting &amp; FAQ</h3>
+                    <p>Common setup issues and what they mean.</p>
+                    <a href="troubleshooting.html">Read it ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="docs-footer">DeltaCortex — your data stays on your device.</div>
+
+</body>
+</html>

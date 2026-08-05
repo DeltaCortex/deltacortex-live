@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Workflows — DeltaCortex Docs</title>
+<meta name="description" content="Add positions, import trades, find new trades with the scanners, roll, and close — the day-to-day DeltaCortex workflows.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 136 110'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23F015E0'/%3E%3Cstop offset='0.55' stop-color='%2322E5EE'/%3E%3Cstop offset='1' stop-color='%23EFA21B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M68 10 L120 98 L16 98 Z' fill='none' stroke='%234a5d7e' stroke-width='16' stroke-linejoin='round'/%3E%3Cpath d='M4 78 L46 78 L60 48 L74 78 L82 78 L91 62 L100 78 L132 78' fill='none' stroke='url(%23g)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="docs-header">
+    <a href="index.html" class="docs-brand" style="text-decoration:none;">
+        <svg width="38" height="30" viewBox="0 0 136 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="dcPulse" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#F015E0"/>
+                    <stop offset="0.55" stop-color="#22E5EE"/>
+                    <stop offset="1" stop-color="#EFA21B"/>
+                </linearGradient>
+            </defs>
+            <path d="M68 10 L120 98 L16 98 Z" fill="none" stroke="#4a5d7e" stroke-width="14" stroke-linejoin="round"/>
+            <path d="M2 78 L44 78 L58 46 L72 78 L80 78 L89 60 L98 78 L134 78"
+                  fill="none" stroke="url(#dcPulse)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+            <div class="docs-brand-name">DeltaCortex <span style="color:var(--text-muted); font-weight:500;">Docs</span></div>
+            <div class="docs-brand-sub">Options Trading Engine</div>
+        </div>
+    </a>
+    <a class="docs-header-cta" href="https://deltacortex.app" target="_blank" rel="noopener">Open the App ↗</a>
+</header>
+
+<div class="docs-shell">
+    <nav class="docs-nav" aria-label="Documentation sections">
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Start Here</div>
+            <a href="index.html" class="docs-nav-link">Getting Started</a>
+        </div>
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Reference</div>
+            <a href="core-workflows.html" class="docs-nav-link active">Core Workflows</a>
+            <a href="settings-data.html" class="docs-nav-link">Settings &amp; Data</a>
+            <a href="troubleshooting.html" class="docs-nav-link">Troubleshooting &amp; FAQ</a>
+        </div>
+    </nav>
+
+    <main class="docs-content">
+        <h1>Core Workflows</h1>
+        <p class="docs-lede">
+            The day-to-day moves: getting a position into DeltaCortex, finding your next trade,
+            rolling, and closing. For dashboard cards and tab orientation, see
+            <a href="index.html">Getting Started</a>; for strategy reasoning behind these actions,
+            see the in-app <strong>Decision Guide</strong>.
+        </p>
+
+        <section id="add-position">
+            <h2>Add a position manually</h2>
+            <p>
+                Click <strong>+ Add</strong> in the main toolbar. You can paste an option symbol
+                (OCC format, e.g. <code>TGT260417P00115000</code>) into the top field to
+                auto-fill ticker, strike, expiration, and type — or just fill in the fields below
+                it directly:
+            </p>
+            <ul>
+                <li><strong>Ticker, Strike, Expiration, Contracts, Option Type (Put/Call), Position (Short/Long)</strong></li>
+                <li><strong>Entry Price</strong> and <strong>Current Price</strong> — per share</li>
+                <li><strong>Delta</strong> and <strong>Implied Volatility</strong> — feed the Health Score and Smart Action logic</li>
+            </ul>
+            <div class="docs-callout">
+                <strong>Paper trades:</strong> check "Paper trade (not real money)" to track a
+                position without it counting toward buying power, concentration limits, or any
+                real-money performance stats.
+            </div>
+        </section>
+
+        <section id="import-csv">
+            <h2>Import trades from a CSV export</h2>
+            <p>
+                From the <strong>Performance</strong> tab, <strong>📥 Import Trades from CSV</strong>
+                bulk-loads closed trade history from a CSV file.
+            </p>
+            <div class="docs-callout warn">
+                <strong>Format note:</strong> the importer currently expects Fidelity's exact CSV
+                export format. If you trade through a different broker, use manual entry (above)
+                for now — broader format support isn't built yet.
+            </div>
+        </section>
+
+        <section id="find-trades">
+            <h2>Find new trades</h2>
+            <p><strong>🔍 Find Puts</strong> (main toolbar) opens the <strong>Cash-Secured Put Scanner</strong>:</p>
+            <ul>
+                <li>Enter a ticker and a target delta (conservative ~0.20, balanced ~0.30, aggressive ~0.40)</li>
+                <li>Candidates are ranked by a <strong>Balanced Score</strong> — annualized yield, ATR downside buffer, and OTM distance, penalized for high assignment delta and expirations crossing earnings</li>
+                <li>A 🟢/🟡/🔴 <strong>Hurdle</strong> icon shows whether the annualized yield clears your FDRXX × hurdle-multiple bar (set in Settings)</li>
+                <li><strong>If Assigned</strong> = strike − premium, your effective cost basis if the put gets assigned</li>
+            </ul>
+            <p>Once you hold assigned shares, the same idea applies to <strong>Scan CCs</strong> from that shares row — the <strong>Covered Call Scanner</strong> labels each strike by strategic zone:</p>
+            <div class="docs-card-grid">
+                <div class="docs-card">
+                    <div class="docs-card-title">🟢 Recovery</div>
+                    <div class="docs-card-body">Strike ≥ your cost basis. Small premium, but called away means exiting at or above breakeven.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">🟡 Income</div>
+                    <div class="docs-card-body">Stock &lt; strike &lt; basis. Meaningful premium; if assigned you cap a share loss at that strike.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">🔴 Aggressive / ITM</div>
+                    <div class="docs-card-body">Strike ≤ stock price. High premium, high assignment odds — effectively an exit decision.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roll">
+            <h2>Roll a position</h2>
+            <p>
+                From a position's action menu, <strong>Roll</strong> closes the current option and
+                opens a new one in a single step, preserving roll-chain history for accurate P&amp;L.
+                You'll enter the new strike, new expiration, the exit price on the position you're
+                closing, and the entry price/delta/IV on the new one.
+            </p>
+            <p>
+                Not sure what to roll to? The <strong>Roll Credit Scanner</strong> (also from the
+                action menu) scans the chain for net-credit roll candidates automatically, so you
+                don't have to price combinations by hand.
+            </p>
+            <p>
+                If a position has moved against you, the <strong>Wheel Recovery Calculator</strong>
+                projects how long covered-call premium alone would take to grind your cost basis
+                back down to today's stock price — a patience timeline, not a stock forecast.
+            </p>
+        </section>
+
+        <section id="close">
+            <h2>Close a position or handle assignment</h2>
+            <ul>
+                <li><strong>Close</strong> — enter the exit price; the position moves to your closed-trade history and P&amp;L is recorded.</li>
+                <li><strong>Assign CSP → Shares</strong> — when a put is assigned, this converts it into a shares position, carrying the full roll chain's premiums into an accurate cost basis, ready for you to write covered calls against.</li>
+                <li><strong>Close shares (called away or sold)</strong> — same idea in reverse: closes an assigned-shares position, whether from a call getting exercised or a manual sale.</li>
+            </ul>
+            <div class="docs-callout">
+                <strong>Wheel-cycle basis tracking:</strong> when you close a covered call written
+                against shares you're still holding, DeltaCortex offers to fold that call's
+                realized P&amp;L into the shares' cost basis — so your break-even keeps tracking
+                the whole cycle, not just the original assignment price.
+            </div>
+        </section>
+
+        <section id="next">
+            <h2>What's next</h2>
+            <div class="docs-next-grid">
+                <div class="docs-next-card">
+                    <h3>Settings &amp; Data</h3>
+                    <p>Local Backup vs. Cloud Sync, Portfolio Configuration, Event Dates, License.</p>
+                    <a href="settings-data.html">Read it ↗</a>
+                </div>
+                <div class="docs-next-card">
+                    <h3>Troubleshooting &amp; FAQ</h3>
+                    <p>Common setup issues and what they mean.</p>
+                    <a href="troubleshooting.html">Read it ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="docs-footer">DeltaCortex — your data stays on your device.</div>
+
+</body>
+</html>

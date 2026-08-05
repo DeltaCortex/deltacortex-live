@@ -302,6 +302,13 @@ code {
     margin-bottom: 0;
 }
 
+.docs-next-card a {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
 .docs-footer {
     text-align: center;
     padding: 30px 24px 50px;

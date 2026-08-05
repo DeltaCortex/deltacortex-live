@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — DeltaCortex Docs</title>
+<meta name="description" content="Set up DeltaCortex and track your first cash-secured put or covered call in a few minutes.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 136 110'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%23F015E0'/%3E%3Cstop offset='0.55' stop-color='%2322E5EE'/%3E%3Cstop offset='1' stop-color='%23EFA21B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M68 10 L120 98 L16 98 Z' fill='none' stroke='%234a5d7e' stroke-width='16' stroke-linejoin='round'/%3E%3Cpath d='M4 78 L46 78 L60 48 L74 78 L82 78 L91 62 L100 78 L132 78' fill='none' stroke='url(%23g)' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="docs-header">
+    <a href="index.html" class="docs-brand" style="text-decoration:none;">
+        <svg width="38" height="30" viewBox="0 0 136 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+                <linearGradient id="dcPulse" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#F015E0"/>
+                    <stop offset="0.55" stop-color="#22E5EE"/>
+                    <stop offset="1" stop-color="#EFA21B"/>
+                </linearGradient>
+            </defs>
+            <path d="M68 10 L120 98 L16 98 Z" fill="none" stroke="#4a5d7e" stroke-width="14" stroke-linejoin="round"/>
+            <path d="M2 78 L44 78 L58 46 L72 78 L80 78 L89 60 L98 78 L134 78"
+                  fill="none" stroke="url(#dcPulse)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+            <div class="docs-brand-name">DeltaCortex <span style="color:var(--text-muted); font-weight:500;">Docs</span></div>
+            <div class="docs-brand-sub">Options Trading Engine</div>
+        </div>
+    </a>
+    <a class="docs-header-cta" href="https://deltacortex.app" target="_blank" rel="noopener">Open the App ↗</a>
+</header>
+
+<div class="docs-shell">
+    <nav class="docs-nav" aria-label="Documentation sections">
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Start Here</div>
+            <a href="index.html" class="docs-nav-link active">Getting Started</a>
+        </div>
+        <div class="docs-nav-group">
+            <div class="docs-nav-label">Reference</div>
+            <div class="docs-nav-soon">Core Workflows <span class="docs-nav-soon-badge">Soon</span></div>
+            <div class="docs-nav-soon">Settings &amp; Data <span class="docs-nav-soon-badge">Soon</span></div>
+            <div class="docs-nav-soon">Troubleshooting &amp; FAQ <span class="docs-nav-soon-badge">Soon</span></div>
+        </div>
+    </nav>
+
+    <main class="docs-content">
+        <h1>Getting Started</h1>
+        <p class="docs-lede">
+            DeltaCortex tracks your cash-secured puts and covered calls, and surfaces one clear
+            next move for every position — with the reasoning shown, not hidden. This page gets
+            you from a fresh signup to your first tracked position.
+        </p>
+
+        <section id="trial">
+            <h2><span class="docs-step-num">1</span> Start your free trial</h2>
+            <p>
+                Go to <a href="https://deltacortex.app" target="_blank" rel="noopener">deltacortex.app</a>
+                and enter your email when prompted. That starts a 14-day trial immediately —
+                no credit card required.
+            </p>
+            <div class="docs-callout">
+                <strong>Privacy note:</strong> your email is used only to identify your trial on
+                this device. It isn't shared or used for marketing, and your positions and market
+                data key never leave your browser (or your own private GitHub Gist, if you turn on
+                Cloud Sync later).
+            </div>
+        </section>
+
+        <section id="api-key">
+            <h2><span class="docs-step-num">2</span> Connect your market data key</h2>
+            <p>
+                DeltaCortex uses <a href="https://www.marketdata.app" target="_blank" rel="noopener">MarketData.app</a>
+                for live option quotes — prices, Greeks, and IV. Sign up for a free or paid key on
+                their site, then paste it into the onboarding step (or later from
+                <strong>Settings → Market Data Connection</strong>). It's stored only in this
+                browser, never on a DeltaCortex server.
+            </p>
+            <p>
+                You can skip this during onboarding and add it later — the app still opens without
+                it, you just won't get live prices until it's connected.
+            </p>
+        </section>
+
+        <section id="first-position">
+            <h2><span class="docs-step-num">3</span> Add your first position</h2>
+            <p>Onboarding ends with two options:</p>
+            <ul>
+                <li><strong>Load an example position</strong> — the fastest way to see how a
+                    position card, its drawer, and the Today's Decisions panel work before you
+                    enter anything real. You can clear it anytime from the trash icon.</li>
+                <li><strong>Start fresh</strong> — add your own open put or call right away via
+                    the <strong>+ Add</strong> button.</li>
+            </ul>
+            <p>
+                A full walkthrough of adding positions manually, importing trades from a CSV
+                export, and using the CSP/CC/Roll scanners will live in the upcoming
+                <strong>Core Workflows</strong> section.
+            </p>
+        </section>
+
+        <section id="orientation">
+            <h2><span class="docs-step-num">4</span> Get oriented on the main screen</h2>
+            <p>Six dashboard cards summarize your whole book at a glance:</p>
+            <div class="docs-card-grid">
+                <div class="docs-card">
+                    <div class="docs-card-title">Total P&amp;L</div>
+                    <div class="docs-card-body">Unrealized profit/loss across every open position, marked at current price.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Needs Action</div>
+                    <div class="docs-card-body">Positions flagged for a real decision right now — loss stops, assignment risk, idle capital, or earnings crossing.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Deployed</div>
+                    <div class="docs-card-body">Percent of buying power tied up in collateral and share value. Target ~60%.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Available BP</div>
+                    <div class="docs-card-body">Buying power not currently locked as collateral — what's free for a new trade right now.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Weekly Goal</div>
+                    <div class="docs-card-body">Of the next 8 weeks, how many are on pace to hit your weekly income goal from open CSPs/CCs.</div>
+                </div>
+                <div class="docs-card">
+                    <div class="docs-card-title">Monthly Yield</div>
+                    <div class="docs-card-body">Premium captured from closed trades this month, as a percent of buying power. Target 1–2%.</div>
+                </div>
+            </div>
+            <p>Below that, the main tabs:</p>
+            <ul>
+                <li><strong>📊 Positions</strong> — your open puts, calls, and assigned shares</li>
+                <li><strong>✅ Weekly Audit</strong> — a guided pass through anything that needs a decision this week</li>
+                <li><strong>📅 Weekly Review</strong> — a look back at the week's activity</li>
+                <li><strong>📈 Performance</strong> — closed-trade history and analytics</li>
+                <li><strong>📋 Guide</strong> — the in-app Decision Guide (see callout below)</li>
+                <li><strong>⚙️ Settings</strong> — license, market data, backup/sync, portfolio configuration</li>
+            </ul>
+            <div class="docs-callout">
+                <strong>Looking for strategy explanations?</strong> Health Score bands, how to read
+                the Smart Action column, position sizing, and the profit-taking framework are all
+                covered in depth by the in-app <strong>Guide</strong> tab — this docs site won't
+                duplicate that content.
+            </div>
+        </section>
+
+        <section id="license">
+            <h2><span class="docs-step-num">5</span> What's free vs. what needs a license</h2>
+            <p>
+                Position tracking and the decision engine (Health Score, Smart Action) always stay
+                available, trial or not. An active license — active during your 14-day trial, or
+                after a paid plan — unlocks the CSP/CC/Roll scanners and Cloud Sync. Manage your
+                license anytime from <strong>Settings → License</strong>.
+            </p>
+        </section>
+
+        <section id="next">
+            <h2>What's next</h2>
+            <div class="docs-next-grid">
+                <div class="docs-next-card">
+                    <span class="docs-nav-soon-badge">Soon</span>
+                    <h3>Core Workflows</h3>
+                    <p>Adding &amp; importing positions, running the scanners, rolling and closing.</p>
+                </div>
+                <div class="docs-next-card">
+                    <span class="docs-nav-soon-badge">Soon</span>
+                    <h3>Settings &amp; Data</h3>
+                    <p>Local Backup vs. Cloud Sync, Portfolio Configuration, Event Dates, License.</p>
+                </div>
+                <div class="docs-next-card">
+                    <span class="docs-nav-soon-badge">Soon</span>
+                    <h3>Troubleshooting &amp; FAQ</h3>
+                    <p>Common setup issues and where to get help.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="docs-footer">DeltaCortex — your data stays on your device.</div>
+
+</body>
+</html>

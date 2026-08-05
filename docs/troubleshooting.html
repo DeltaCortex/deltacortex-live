@@ -59,19 +59,22 @@
                 Connect a <a href="https://www.marketdata.app" target="_blank" rel="noopener">MarketData.app</a>
                 key in <strong>Settings → Market Data Connection</strong>. The free tier gives 100
                 requests/day — enough for a small portfolio, but if you're tracking many positions
-                and hitting the limit, a paid tier raises it. Positions and the decision engine
-                still work without a key; you just won't get live prices, Greeks, or IV until it's
-                connected.
+                and hitting the limit, a paid tier raises it. Raw position tracking still works
+                without a key — you just won't get live prices, Greeks, or IV until it's connected.
+                (Separately, the decision engine itself also needs an active trial or license — see
+                below.)
             </p>
         </section>
 
         <section id="scanners-locked">
-            <h2>Find Puts / Scan CCs / Cloud Sync are greyed out</h2>
+            <h2>Health Score, Smart Action, scanners, or Cloud Sync are locked</h2>
             <p>
-                Your trial or license has ended. Your positions, P&amp;L, and the decision engine
-                (Smart Actions, eject prices) stay fully available regardless — only the scanners
-                and Cloud Sync pause. Activate a license in <strong>Settings → License</strong> to
-                restore them.
+                Your trial or license has ended. Your raw position tracking (ticker, strike,
+                expiration, entry/current price, basic P&amp;L) stays fully available regardless —
+                only the decision engine (Health Score, Smart Action, eject prices, capital
+                efficiency), the Find Puts / Scan CCs scanners, Weekly Review, and Cloud Sync pause.
+                Activate a license in <strong>Settings → License</strong> to restore them
+                immediately, no reload needed.
             </p>
         </section>
 
